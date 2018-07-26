@@ -44,7 +44,8 @@ function initMap() {
    var request = {
      location: myLatlng,
      radius: 5000,
-     types: ['restaurant']
+     types: ['restaurant', 'cafe', 'food', 'bakery', 'meal_delivery', 'meal_delivery'],
+     keywords: "(pizza) AND (sushi) AND (pan)"
    };
 
    // Creamos el servicio PlaceService y enviamos la petición.
