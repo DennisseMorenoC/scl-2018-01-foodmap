@@ -3,7 +3,7 @@ header{
     text-align: center;
 }
 .titulo{
-    padding: 5% 0;
+    padding: 4% 0;
     text-align: center;
     color: white;
     font-family: 'Montserrat', sans-serif;
@@ -13,11 +13,40 @@ header{
 #mapContainer{
     margin-top: 3%;
     text-align: center;
-    border: 2px solid #9B0000;
+    border: 2px solid gray;
     width: 100%;
     height: 200px;
 }
 .textoBusqueda{
-    padding-top: 2%;
+    font-family: 'Montserrat', sans-serif;;
+    padding-top: 6%;
     text-align: center;
+}
+.dropdown{
+    text-align: center;
+}
+#dropdownMenuButton{
+    background-color: gray;
+}
+.dropdown-item{
+    width: 255px;
+}
+.buscar{
+    text-align: center;
+}
+input{
+    width: 100px;
+}
+.form-inline{
+    display: inline-grid;
+}
+.btn-outline-success{
+    color: white;
+    border-color: gray;
+    background-color: #FF0000;
+}
+.btn-outline-success:hover {
+    color: white;
+    border-color: gray;
+    background-color: #CC0000;
 }
