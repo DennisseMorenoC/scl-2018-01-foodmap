@@ -4,6 +4,7 @@ function timeout() {
 }
 
 function redirect() {
-    window.location = "index.html"
+    window.location = "paginaInicio.html"
     return
 };
+
