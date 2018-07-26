@@ -5,14 +5,8 @@
     <title>FoodMap</title>
     <link href="https://fonts.googleapis.com/css?family=Montserrat:200,300,400|Roboto+Condensed:300,400,700" rel="stylesheet">
     <link rel="stylesheet" href="../bootstrap-4.1.1-dist/css/bootstrap.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt"
-        crossorigin="anonymous">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <script src='https://api.tiles.mapbox.com/mapbox.js/v1.6.4/mapbox.js'></script>
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.3/dist/leaflet.css" integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ=="
-        crossorigin="" />
-    <script src="https://unpkg.com/leaflet@1.3.3/dist/leaflet.js" integrity="sha512-tAGcCfR4Sc5ZP5ZoVz0quoZDYX5aCtEm/eu1KhSLj2c9eFrylXZknQYmxUssFaVJKvvc0dJQixhGjG2yXWiV9Q=="
-        crossorigin=""></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" /> <script src='https://api.tiles.mapbox.com/mapbox.js/v1.6.4/mapbox.js'></script>
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -23,8 +17,14 @@
                 <h1 class="titulo">FoodMap</h1>
             </div>
     </header>
+    <section class="container">
+        <div  class="row">
+            <div class="col-12 col-sm-12 col-lg-12">
+                <div id="map"></div>
+            </div>
+        </div>
+    </section>
 
-    <div id="map"></div>
     <section class="container">
         <div class="row">
             <div class="col-12 col-sm-12 col-lg-12">
@@ -32,6 +32,8 @@
                     <h5>¿Qué estas buscando?</h5>
                 </div>
             </div>
+        </div>
+        <div class="row"> 
             <div class="col-12 col-sm-12 col-lg-12">
                 <div class="dropdown">
                     <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
@@ -45,26 +47,23 @@
                     </div>
                 </div>
             </div>
+        </div>
+        <div class="row">
             <div class="col-12 col-sm-12 col-lg-12">
                 <div class="buscar">
-                    <form class="form-inline my-2 my-lg-0">
-                        <input class="form-control mr-sm-0 form-control-sm" type="search" placeholder="Filtrar Restaurantes" aria-label="Search">
-                        <button class="btn btn-outline-success my-2 my-sm-0 btn-sm" type="submit">
-                            <i class="fas fa-search"></i>
-                        </button>
-                    </form>
+                    <input class="form-control mr-sm-2" type="search" placeholder="Filtrar Restaurantes" aria-label="Search">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
+                        <i class="fas fa-search"></i>
+                    </button>
                 </div>
-
             </div>
-
         </div>
     </section>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em" crossorigin="anonymous"></script>
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBlaIlGNw_odMPFGYlvYo-sJ4flXS0t2qs&callback=initMap" type="text/javascript"></script>
-    <script type="text/javascript" src="https://maps.google.com/maps/api/js?libraries=places"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBlaIlGNw_odMPFGYlvYo-sJ4flXS0t2qs&callback=initMap&libraries=places" type="text/javascript"></script>
     <script src="app.js"></script>
 </body>
 

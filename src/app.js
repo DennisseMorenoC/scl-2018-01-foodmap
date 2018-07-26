@@ -1,3 +1,97 @@
+var map, infoWindow;
+function initMap() {
+  map = new google.maps.Map(document.getElementById('map'), {
+    center: {lat: -34.397, lng: 150.644},
+    zoom: 15,
+    mapTypeId: google.maps.MapTypeId.MAPA,
+    zoomControl: true,
+    zoomControlOptions: {
+        position: google.maps.ControlPosition.RIGHT_BOTTOM
+    },
+    scaleControl: true,
+    streetViewControl: true,
+    streetViewControlOptions: {
+        position: google.maps.ControlPosition.LEFT_TOP
+    },
+    fullscreenControl: true
+  });
+  infoWindow = new google.maps.InfoWindow;
+  
+
+  // Try HTML5 geolocation.
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(function(position) {
+     
+        lat = position.coords.latitude,
+        lng = position.coords.longitude
+      
+      var myLatlng = new google.maps.LatLng(lat, lng);
+
+      var mapOptions = {
+        center: myLatlng,
+        zoom: 14,
+        mapTypeId: google.maps.MapTypeId.MAP
+      };
+
+      infoWindow.setPosition(myLatlng);
+      infoWindow.setContent('Este eres tu');
+      infoWindow.open(map);
+      map.setCenter(myLatlng);
+
+      infowindow = new google.maps.InfoWindow();
+
+   // Especificamos la localización, el radio y el tipo de lugares que queremos obtener
+   var request = {
+     location: myLatlng,
+     radius: 5000,
+     types: ['restaurant']
+   };
+
+   // Creamos el servicio PlaceService y enviamos la petición.
+   var service = new google.maps.places.PlacesService(map);
+
+   service.nearbySearch(request, function(results, status) {
+     if (status === google.maps.places.PlacesServiceStatus.OK) {
+       for (var i = 0; i < results.length; i++) {
+         crearMarcador(results[i]);
+       }
+     }
+   });
+
+    }, function() {
+      handleLocationError(true, infoWindow, map.getCenter());
+    });
+  } else {
+    // Browser doesn't support Geolocation
+    handleLocationError(false, infoWindow, map.getCenter());
+  }
+}
+
+function crearMarcador(place)
+ {
+   // Creamos un marcador
+   var marker = new google.maps.Marker({
+     map: map,
+     position: place.geometry.location
+   });
+
+ // Asignamos el evento click del marcador
+   google.maps.event.addListener(marker, 'click', function() {
+     infowindow.setContent(place.name);
+     infowindow.open(map, this);
+   });
+}
+var service = new google.maps.places.PlacesService(map);
+
+function handleLocationError(browserHasGeolocation, infoWindow, myLatln) {
+  infoWindow.setPosition(myLatln);
+  infoWindow.setContent(browserHasGeolocation ?
+                        'Error: The Geolocation service failed.' :
+                        'Error: Your browser doesn\'t support geolocation.');
+  infoWindow.open(map);
+}
+
+
 /*var map = L.map('mapContainer').fitWorld();//consumiendo api de geolocalizacion leaveleft
 
 L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
@@ -62,52 +156,3 @@ promise.then(function(data) {
     restaurantes.addTo(map)
     others.addTo(map)
 });*/
-var map, infoWindow;
-function initMap() {
-  map = new google.maps.Map(document.getElementById('map'), {
-    center: {lat: -34.397, lng: 150.644},
-    zoom: 15,
-    zoomControl: true,
-    zoomControlOptions: {
-        position: google.maps.ControlPosition.RIGHT_BOTTOM
-    },
-    scaleControl: true,
-    streetViewControl: true,
-    streetViewControlOptions: {
-        position: google.maps.ControlPosition.LEFT_TOP
-    },
-    fullscreenControl: true
-  });
-  infoWindow = new google.maps.InfoWindow;
-
-  // Try HTML5 geolocation.
-  if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(function(position) {
-      var pos = {
-        lat: position.coords.latitude,
-        lng: position.coords.longitude
-      };
-
-      infoWindow.setPosition(pos);
-      infoWindow.setContent('Este eres tu');
-      infoWindow.open(map);
-      map.setCenter(pos);
-    }, function() {
-      handleLocationError(true, infoWindow, map.getCenter());
-    });
-  } else {
-    // Browser doesn't support Geolocation
-    handleLocationError(false, infoWindow, map.getCenter());
-  }
-}
-
-function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-  infoWindow.setPosition(pos);
-  infoWindow.setContent(browserHasGeolocation ?
-                        'Error: The Geolocation service failed.' :
-                        'Error: Your browser doesn\'t support geolocation.');
-  infoWindow.open(map);
-}
-
-
-
