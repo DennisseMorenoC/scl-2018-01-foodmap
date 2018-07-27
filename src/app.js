@@ -94,7 +94,7 @@ function handleLocationError(browserHasGeolocation, infoWindow, myLatln) {
 }
 let tipoRestaurante = document.getElementById("tipoRestaurante");
 function filtrarRestaurantes(){
-    
+    crearMarcador.filter(tipoRestaurante);
 }
 
 
