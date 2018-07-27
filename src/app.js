@@ -92,6 +92,10 @@ function handleLocationError(browserHasGeolocation, infoWindow, myLatln) {
                         'Error: Your browser doesn\'t support geolocation.');
   infoWindow.open(map);
 }
+let tipoRestaurante = document.getElementById("tipoRestaurante");
+function filtrarRestaurantes(){
+    
+}
 
 
 /*var map = L.map('mapContainer').fitWorld();//consumiendo api de geolocalizacion leaveleft
