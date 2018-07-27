@@ -93,9 +93,10 @@ function handleLocationError(browserHasGeolocation, infoWindow, myLatln) {
   infoWindow.open(map);
 }
 let tipoRestaurante = document.getElementById("tipoRestaurante");
-function filtrarRestaurantes(){
-    crearMarcador.filter(tipoRestaurante);
+function filtrarRestaurantes(marker){
+    crearMarcador.filter((marker) => marker.includes(tipoRestaurante));
 }
+
 
 
 /*var map = L.map('mapContainer').fitWorld();//consumiendo api de geolocalizacion leaveleft
