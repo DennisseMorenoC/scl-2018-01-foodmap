@@ -34,7 +34,7 @@ function initMap() {
       };
 
       infoWindow.setPosition(myLatlng);
-      infoWindow.setContent('Este eres tu');
+      infoWindow.setContent('Este eres tu ');
       infoWindow.open(map);
       map.setCenter(myLatlng);
 
@@ -80,6 +80,7 @@ function crearMarcador(place)
    google.maps.event.addListener(marker, 'click', function() {
      infowindow.setContent(place.name);
      infowindow.open(map, this);
+
    });
 }
 var service = new google.maps.places.PlacesService(map);
